@@ -274,6 +274,9 @@ button {
   html {
     font-size: 52.5%; }
 
+  .wrap {
+    padding: 10px 10px 60px 10px; }
+
   .test.container {
     width: 100%;
     padding: 80px 25px;
@@ -312,14 +315,4 @@ button {
     display: none; }
 
   .test.form.pair.text::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: calc(50% - 1.1rem);
-    display: block;
-    width: 2.2rem;
-    height: 2.2rem;
-    background-size: inherit;
-    background-position: top left;
-    background-repeat: no-repeat;
-    transition: all 0.15s linear; } }
+    background-size: inherit; } }
