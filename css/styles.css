@@ -25,6 +25,18 @@
   font-style: italic; }
 @font-face {
   font-family: 'Roboto';
+  src: url("../font/Roboto-Black.eot");
+  src: url("../font/Roboto-Black.eot?#iefix") format("embedded-opentype"), url("../font/Roboto-Black.ttf") format("truetype"), url("../font/Roboto-Black.woff") format("woff"), url("../font/Roboto-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal; }
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto-BlackItalic.eot");
+  src: url("../font/Roboto-BlackItalic.eot?#iefix") format("embedded-opentype"), url("../font/Roboto-BlackItalic.ttf") format("truetype"), url("../font/Roboto-BlackItalic.woff") format("woff"), url("../font/Roboto-BlackItalic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic; }
+@font-face {
+  font-family: 'Roboto';
   src: url("../font/Roboto-Light.eot");
   src: url("../font/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../font/Roboto-Light.ttf") format("truetype"), url("../font/Roboto-Light.woff") format("woff"), url("../font/Roboto-Light.woff2") format("woff2");
   font-weight: 300;
@@ -35,7 +47,7 @@
   src: url("../font/Roboto-LightItalic.eot?#iefix") format("embedded-opentype"), url("../font/Roboto-LightItalic.ttf") format("truetype"), url("../font/Roboto-LightItalic.woff") format("woff"), url("../font/Roboto-LightItalic.woff2") format("woff2");
   font-weight: 300;
   font-style: italic; }
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0; }
@@ -72,7 +84,8 @@ button {
   padding: 60px 10px;
   background-position: -25px -50px;
   background-size: calc(100% + 50px);
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  transition: background-image 1s, background-size 1s, color 1s, font-weight 0.2s; }
 
 .test.container {
   position: relative;
@@ -85,7 +98,8 @@ button {
   margin-right: auto;
   padding: 120px 200px;
   border: 6px solid #ffffff;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25); }
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+  transition: background-color 1s; }
   .test.container::before {
     content: "Какое направление в IT выбрать?";
     position: absolute;
@@ -105,7 +119,8 @@ button {
     height: 30px;
     background-size: 141px 30px;
     transform: rotate(90deg);
-    transform-origin: left top; }
+    transform-origin: left top;
+    transition: background-image 1s; }
 
 /* Pairs (test questions) */
 .test.form.counter {
@@ -128,6 +143,9 @@ button {
   width: 1px;
   height: 1px;
   clip: rect(1px, 1px, 1px, 1px); }
+  .test.form.pair.input:checked ~ .test.form.pair.text::before {
+    border-width: 7px;
+    animation: elastic 0.25s 1 ease-in; }
 
 .test.form.pair.text {
   position: relative;
@@ -141,14 +159,26 @@ button {
     display: block;
     width: 2.2rem;
     height: 2.2rem;
-    background-size: 2.2rem 2.2rem;
-    background-position: top left;
-    background-repeat: no-repeat;
-    transition: all 0.15s linear; }
+    border-style: solid;
+    border-radius: 50%;
+    border-width: 1px; }
 
-.test.form.pair.input:checked ~ .test.form.pair.text {
-  font-weight: 700; }
+.test.form.pair.input:focus ~ .test.form.pair.text, .test.form.pair.input:checked ~ .test.form.pair.text {
+  transition: font-weight 0.25s; }
 
+@keyframes elastic {
+  0% {
+    border-width: 1px;
+    transform: scale(1);
+    transform-origin: center; }
+  85% {
+    border-width: 11px;
+    transform: scale(0.8);
+    transform-origin: center; }
+  100% {
+    border-width: 7px;
+    transform: scale(1);
+    transform-origin: center; } }
 /* Buttons */
 .test.buttons {
   display: flex;
@@ -164,7 +194,8 @@ button {
   padding: 1.3rem;
   border: 1px solid;
   background-color: transparent;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: font-weight 0.2s, border-color 1s, color 1s; }
   .test.button::before {
     content: "";
     position: absolute;
@@ -174,9 +205,12 @@ button {
     width: 0;
     z-index: 0;
     transition: 0.4s all ease; }
-  .test.button:hover::before {
-    width: 100%;
-    transition: all 0.4s ease; }
+  .test.button:hover, .test.button:focus {
+    outline: none;
+    outline-offset: 0; }
+    .test.button:hover::before, .test.button:focus::before {
+      width: 100%;
+      transition: all 0.4s ease; }
   .test.button span {
     position: relative;
     z-index: 1; }
@@ -192,27 +226,22 @@ button {
   text-indent: -9999px;
   width: 50px;
   height: 18px;
-  background: #794119;
   display: block;
   border-radius: 20px;
   position: absolute;
   bottom: 30px;
   left: calc(50% - 25px);
   font-size: 0; }
-
-.switch.label:after {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 20px;
-  height: 10px;
-  background: #fff;
-  border-radius: 10px;
-  transition: 0.3s; }
-
-.switch:checked + .switch.label {
-  background: #857b94; }
+  .switch.label::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 10px;
+    background: #fff;
+    border-radius: 10px;
+    transition: 0.3s; }
 
 .switch:checked + .switch.label:after {
   left: calc(100% - 4px);
@@ -231,18 +260,20 @@ button {
     background-color: #FFFFFF; }
     .wrap.orange .test.container::after {
       background-image: url(../img/logo.svg); }
-  .wrap.orange .test.form.pair.text::before {
-    background-image: url(../img/circle.svg); }
-  .wrap.orange .test.form.pair.input:checked ~ .test.form.pair.text::before {
-    background-image: url(../img/heart.svg); }
+  .wrap.orange .test.form.pair.input:focus ~ .test.form.pair.text, .wrap.orange .test.form.pair.input:checked ~ .test.form.pair.text {
+    font-weight: 700; }
   .wrap.orange .test.button {
     font-weight: 300;
     border-color: #000000;
     color: #000000; }
-    .wrap.orange .test.button:hover {
+    .wrap.orange .test.button:hover, .wrap.orange .test.button:focus {
       color: #FFFFFF; }
     .wrap.orange .test.button::before {
       background-color: #000000; }
+  .wrap.orange .switch.label {
+    background-color: #794119; }
+    .wrap.orange .switch.label:before {
+      content: 'Переключить оформление на тёмное?'; }
 
 .wrap.violet {
   font-weight: 400;
@@ -253,19 +284,44 @@ button {
     background-color: rgba(69, 66, 87, 0.4); }
     .wrap.violet .test.container::after {
       background-image: url(../img/logo-inverted.svg); }
+  .wrap.violet .test.form.pair.input:focus ~ .test.form.pair.text, .wrap.violet .test.form.pair.input:checked ~ .test.form.pair.text {
+    font-weight: 900; }
   .wrap.violet .test.form.pair.text::before {
-    background-image: url(../img/circle-inverted.svg); }
+    border-color: #FFFFFF; }
   .wrap.violet .test.form.pair.input:checked ~ .test.form.pair.text::before {
-    background-image: url(../img/heart-inverted.svg); }
+    border-color: #FFFFFF; }
   .wrap.violet .test.button {
     font-weight: 400;
     border-color: #FFFFFF;
     color: #FFFFFF; }
-    .wrap.violet .test.button:hover {
+    .wrap.violet .test.button:hover, .wrap.violet .test.button:focus {
       color: #454257; }
     .wrap.violet .test.button::before {
       background-color: #FFFFFF; }
+  .wrap.violet .switch.label {
+    background-color: #857b94; }
+    .wrap.violet .switch.label::before {
+      content: 'Переключить оформление на яркое?'; }
 
+@media (hover: hover) {
+  .switch.label::before {
+    content: '';
+    position: absolute;
+    top: -70px;
+    left: calc(50% - 150px);
+    display: none;
+    width: 300px;
+    padding: 15px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    text-indent: initial;
+    text-align: center;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4); }
+
+  .switch.label:hover::before {
+    display: block; } }
 @media (min-width: 641px) and (max-width: 1000px) {
   .test.container {
     width: 90%;
@@ -300,10 +356,6 @@ button {
   .test.form.counter {
     font-size: 1.5rem;
     margin: 1.8rem 0; }
-
-  .test.form.pair.text::before {
-    background-size: 2.15rem 2.15rem;
-    transition: all 0.15s linear; }
 
   .test.buttons {
     margin-top: 25px; }

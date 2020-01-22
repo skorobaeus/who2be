@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тест: Какое направление в IT выбрать?</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.min.css">
   </head>
   <body>
-    <div class="wrap violet">
+    <div class="wrap">
       <div class="test container">
         
         <div class="test message" STYLE="DISPLAY: NONE">
@@ -23,17 +24,17 @@
         <form class="test form">
           <p class="test form message">Выберите одно из двух утверждений, которое вам ближе:</p>
           <span class="test form counter">4</span>
-          <label class="test form pair label"><input class="test form pair input" type="radio" name="pair" checked><span class="test form pair text">Работать над созданием приложений с виртуальной или дополненной реальностью</span></label>
-          <label class="test form pair label"><input class="test form pair input" type="radio" name="pair"><span class="test form pair text">Делать из макетов дизайнеров красивые и аккуратные сайты</span></label>      
+          <label class="test form pair label"><input class="test form pair input" type="radio" name="pair" tabindex="1"><span class="test form pair text">Работать над созданием приложений с виртуальной или дополненной реальностью</span></label>
+          <label class="test form pair label"><input class="test form pair input" type="radio" name="pair" tabindex="1" checked><span class="test form pair text">Делать из макетов дизайнеров красивые и аккуратные сайты</span></label>      
         </form>  
         
         <div class="test buttons">
-          <button class="test button"><span>Назад</span></button>
-          <button class="test button"><span>Далее</span></button>
+          <button class="test button" tabindex="0"><span>Назад</span></button>
+          <button class="test button" tabindex="1"><span>Далее</span></button>
         </div>
         
       </div>
-      <input type="checkbox" class="switch" id="switch" checked><label class="switch label" for="switch">Переключить тему</label>
+      <input type="checkbox" class="switch input" id="switch" checked><label class="switch label" for="switch">Переключить тему</label>
     </div>   
     <script src="styles.js"></script>
   </body>
