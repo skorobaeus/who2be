@@ -112,10 +112,11 @@ h1:first-child, p:first-child {
 
 p, span, ul>li {
   font-size: 1.8rem;
+  line-height: 120%;
 }
 
 p + p {
-  margin-top: 1.2rem;
+  margin-top: 1.5rem;
 }
 
 button {
@@ -139,6 +140,10 @@ button {
 
 .test.list {
   padding-left: 3rem;
+}
+
+.test.list li + li {
+  margin-top: 0.9rem;
 }
 
 .wrap {
@@ -317,6 +322,19 @@ button {
     position: relative;
     z-index: 1;
   } 
+}
+
+/* Pie result */
+
+#pie {
+  width: 100%;
+  margin: 3rem 0;
+  height: 300px;
+  font-size: 1.2rem;
+}
+
+#legend {
+  display: none;
 }
 
 /* Theme switcher */

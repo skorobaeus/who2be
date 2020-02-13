@@ -23,6 +23,7 @@ switcher.addEventListener('click', event => {
     wrap.classList.toggle('violet');
     wrap.classList.toggle('orange');
   }
+  detectTheme();
 });
 
 Array.from(buttons).forEach(button => {
@@ -40,4 +41,34 @@ function detectColorScheme() {
     scheme = 'violet';
   }
   wrap.classList.toggle(scheme);
+}
+
+/* Pie result */
+// Create chart instance
+var chart = am4core.create("pie", am4charts.PieChart);
+am4core.useTheme(am4themes_animated);
+am4core.useTheme(am4themes_material);
+
+//Add data
+chart.data = [];
+const dataList = document.querySelectorAll('#legend li');
+dataList.forEach(li => {
+  chart.data.push({
+    profession: li.querySelector('.profession').innerHTML,
+    points: li.querySelector('.points').innerHTML
+  });
+});
+
+// Add and configure Series
+chart.innerRadius = am4core.percent(40);
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "points";
+pieSeries.dataFields.category = "profession";
+pieSeries.labels.template.maxWidth = 120;
+pieSeries.labels.template.wrap = true;
+pieSeries.labels.template.truncard = true;
+detectTheme();
+
+function detectTheme() {
+  wrap.classList.contains('orange') ? pieSeries.labels.template.fill="#000000" : pieSeries.labels.template.fill="#FFFFFF";
 }
