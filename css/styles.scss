@@ -110,7 +110,7 @@ h1:first-child, p:first-child {
   margin-top: 0;
 }
 
-p, span {
+p, span, ul>li {
   font-size: 1.8rem;
 }
 
@@ -123,12 +123,31 @@ button {
   font-variant: small-caps;
 }
 
+.test.paragraph.result {
+  font-size: 1.2em;
+  
+  .result.profession {
+    display: block;
+    font-size: 1em;
+    font-weight: 700;
+  }
+}
+
+.test.paragraph + .test.list, .test.list + .test.paragraph {
+  margin-top: 1.2rem;
+}
+
+.test.list {
+  padding-left: 3rem;
+}
+
 .wrap {
   display: flex;
   align-items: center;
   width: 100%;
   min-height: 100vh;
   padding: 60px 10px;
+  font-size: 1.8rem;
   background-position: -25px -50px;
   background-size: calc(100% + 50px);
   background-repeat: no-repeat;
@@ -350,6 +369,10 @@ button {
   background-image: url(../img/orange.svg);
   color: #000000;
   
+  a {
+    color: #ce2f00;
+  }
+  
   .test.container {
     background-color: #FFFFFF;
     
@@ -391,6 +414,10 @@ button {
   background-image: url(../img/violet.svg);
   color: #FFFFFF;
   
+  a {
+   color: #89beff;
+  }
+  
   .test.container {
     background-color: rgba(69, 66, 87, 0.4);
     
@@ -399,7 +426,7 @@ button {
     }     
   }
   
-  .test.form.pair.input:focus ~ .test.form.pair.text, .test.form.pair.input:checked ~ .test.form.pair.text{
+  .test.form.pair.input:focus ~ .test.form.pair.text, .test.form.pair.input:checked ~ .test.form.pair.text, .test.paragraph.result .result.profession{
     font-weight: 900;
   }  
   
