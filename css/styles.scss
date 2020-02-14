@@ -324,6 +324,21 @@ button {
   } 
 }
 
+.test.button:disabled {
+  opacity: 0.4;
+  
+  &:hover {
+    color: inherit!important;
+    cursor: default;
+    transition: none;
+    
+    &::before {
+      width: 0;
+      transition: none;
+    }    
+  }
+}
+
 /* Pie result */
 
 #pie {

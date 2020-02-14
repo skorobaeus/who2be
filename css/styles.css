@@ -279,6 +279,19 @@ button {
   z-index: 1;
 }
 
+.test.button:disabled {
+  opacity: 0.4;
+}
+.test.button:disabled:hover {
+  color: inherit !important;
+  cursor: default;
+  transition: none;
+}
+.test.button:disabled:hover::before {
+  width: 0;
+  transition: none;
+}
+
 /* Pie result */
 #pie {
   width: 100%;
