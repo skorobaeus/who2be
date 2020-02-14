@@ -23,7 +23,7 @@ switcher.addEventListener('click', event => {
     wrap.classList.toggle('violet');
     wrap.classList.toggle('orange');
   }
-  detectTheme();
+  paintPie();
 });
 
 Array.from(buttons).forEach(button => {
@@ -44,31 +44,73 @@ function detectColorScheme() {
 }
 
 /* Pie result */
-// Create chart instance
-var chart = am4core.create("pie", am4charts.PieChart);
-am4core.useTheme(am4themes_animated);
-am4core.useTheme(am4themes_material);
+/* Creating and configuring pie */
+function createPie() {
+  // Create chart instance
+  const chart = am4core.create("pie", am4charts.PieChart);
+  am4core.useTheme(am4themes_animated);
+  am4core.useTheme(am4themes_material);
 
-//Add data
-chart.data = [];
-const dataList = document.querySelectorAll('#legend li');
-dataList.forEach(li => {
-  chart.data.push({
-    profession: li.querySelector('.profession').innerHTML,
-    points: li.querySelector('.points').innerHTML
+  //Add data
+  chart.data = [];
+  const dataList = document.querySelectorAll('#legend li');
+  dataList.forEach(li => {
+    chart.data.push({
+      profession: li.querySelector('.profession').innerHTML,
+      points: li.querySelector('.points').innerHTML
+    });
   });
-});
 
-// Add and configure Series
-chart.innerRadius = am4core.percent(40);
-var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "points";
-pieSeries.dataFields.category = "profession";
-pieSeries.labels.template.maxWidth = 120;
-pieSeries.labels.template.wrap = true;
-pieSeries.labels.template.truncard = true;
-detectTheme();
-
-function detectTheme() {
-  wrap.classList.contains('orange') ? pieSeries.labels.template.fill="#000000" : pieSeries.labels.template.fill="#FFFFFF";
+  // Add and configure Series
+  chart.innerRadius = am4core.percent(40);
+  var pieSeries = chart.series.push(new am4charts.PieSeries());
+  pieSeries.dataFields.value = "points";
+  pieSeries.dataFields.category = "profession";
+  pieSeries.labels.template.maxWidth = 120;
+  pieSeries.labels.template.wrap = true;
+  pieSeries.labels.template.truncard = true;
 }
+
+function paintPie() {
+  const blackLetters = document.querySelectorAll('g[role="menu"] g[fill="#000000"]');
+  const blackLines = document.querySelectorAll('g[role="menu"] g[stroke="#000000"]');
+  const whiteLetters = document.querySelectorAll('g[role="menu"] g[fill="#ffffff"]');
+  const whiteLines = document.querySelectorAll('g[role="menu"] g[stroke="#ffffff"]');
+  
+  if (blackLetters.length != 0 && blackLines.length != 0) {
+    fill(blackLetters, "#ffffff");
+    stroke(blackLines, "#ffffff");
+  }
+  if (whiteLetters.length != 0) {
+    fill(whiteLetters, "#000000");
+    stroke(whiteLines, "#000000");
+  }   
+}
+
+function fill(list, color) {
+  list.forEach(node => node.setAttribute("fill", color));
+}
+
+function stroke(list, color) {
+  list.forEach(node => node.setAttribute("stroke", color));
+}
+
+
+/* Loading AmCharts scripts */
+function loadScript(src) {
+  return new Promise(function(resolve, reject) {
+    let script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve(script);
+    script.onerror = () => reject(new Error(`Ошибка загрузки скрипта ${src}`));
+    document.head.append(script);
+  });
+}
+
+loadScript("https://www.amcharts.com/lib/4/core.js")
+  .then(script => loadScript("https://www.amcharts.com/lib/4/charts.js"))
+  .then(script => loadScript("https://www.amcharts.com/lib/4/themes/animated.js"))
+  .then(script => loadScript("https://www.amcharts.com/lib/4/themes/material.js"))
+  .then(script => {
+    createPie();
+  });
