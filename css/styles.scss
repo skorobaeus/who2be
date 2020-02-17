@@ -157,6 +157,18 @@ button {
   background-size: calc(100% + 50px);
   background-repeat: no-repeat;
   transition: background-image 1s, background-size 1s, color 1s, font-weight 0.2s;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 29px;
+    height: 17px;
+    right: calc((100% - 915px)/ 2);
+    width: 240px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
 }
 
 .test.container {
@@ -402,6 +414,10 @@ button {
   background-image: url(../img/orange.svg);
   color: #000000;
   
+  &::after {
+    background-image: url(../img/made-by.svg);
+  }
+  
   a {
     color: #ce2f00;
   }
@@ -446,6 +462,10 @@ button {
   background-color: #2A364C;
   background-image: url(../img/violet.svg);
   color: #FFFFFF;
+  
+  &::after {
+    background-image: url(../img/made-by-inverted.svg);
+  }  
   
   a {
    color: #89beff;
@@ -518,6 +538,11 @@ button {
 }
 
 @media (min-width: 641px) and (max-width: 1000px) { 
+  
+  .wrap::after {
+    right: calc((100% - 90% + 12px)/ 2);
+  }  
+  
   .test.container {
     width: 90%;
     padding: 120px;
@@ -532,6 +557,12 @@ button {
   .wrap {
     padding: 10px 10px 60px 10px;
     transition: none;
+    
+    &::after {
+      right: 10px;
+      max-width: calc(50% - 50px);
+    }     
+    
   }  
   
   .test.container {

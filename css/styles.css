@@ -126,6 +126,17 @@ button {
   background-repeat: no-repeat;
   transition: background-image 1s, background-size 1s, color 1s, font-weight 0.2s;
 }
+.wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 29px;
+  height: 17px;
+  right: calc((100% - 915px)/ 2);
+  width: 240px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
 
 .test.container {
   position: relative;
@@ -351,6 +362,9 @@ button {
   background-image: url(../img/orange.svg);
   color: #000000;
 }
+.wrap.orange::after {
+  background-image: url(../img/made-by.svg);
+}
 .wrap.orange a {
   color: #ce2f00;
 }
@@ -386,6 +400,9 @@ button {
   background-color: #2A364C;
   background-image: url(../img/violet.svg);
   color: #FFFFFF;
+}
+.wrap.violet::after {
+  background-image: url(../img/made-by-inverted.svg);
 }
 .wrap.violet a {
   color: #89beff;
@@ -446,6 +463,10 @@ button {
   }
 }
 @media (min-width: 641px) and (max-width: 1000px) {
+  .wrap::after {
+    right: calc((100% - 90% + 12px)/ 2);
+  }
+
   .test.container {
     width: 90%;
     padding: 120px;
@@ -459,6 +480,10 @@ button {
   .wrap {
     padding: 10px 10px 60px 10px;
     transition: none;
+  }
+  .wrap::after {
+    right: 10px;
+    max-width: calc(50% - 50px);
   }
 
   .test.container {
