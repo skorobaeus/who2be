@@ -101,7 +101,13 @@ body {
   position: relative;
 }
 
-h1 {
+/* Text sizes and distances*/
+
+.test {
+  font-size: 1.8rem;
+}
+
+h1.heading {
   font-size: 2.9rem;
   font-weight: 700;
 }
@@ -110,8 +116,13 @@ h1:first-child, p:first-child {
   margin-top: 0;
 }
 
-p, span, ul>li {
+.greeting.message p, .greeting.message span, .greeting.message ul>li {
   font-size: 1.8rem;
+  line-height: 120%;
+}
+
+.resulting.message p, .resulting.message span, .resulting.message ul>li {
+  font-size: 1.6rem;
   line-height: 120%;
 }
 
@@ -124,10 +135,10 @@ button {
   font-variant: small-caps;
 }
 
-.test.paragraph.result {
-  font-size: 1.2em;
+.test.paragraph.accent {
+  font-size: 1.1em;
   
-  .result.profession {
+  .accent.profession {
     display: block;
     font-size: 1em;
     font-weight: 700;
@@ -145,6 +156,8 @@ button {
 .test.list li + li {
   margin-top: 0.9rem;
 }
+
+/* Common styles */
 
 .wrap {
   display: flex;
@@ -209,6 +222,19 @@ button {
     transform-origin: left top;
     transition: background-image 1s;
   }
+}
+
+.test.choice {
+  position: relative;
+  margin-top: 80px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: -40px;
+  }  
 }
 
 /* Pairs (test questions) */
@@ -296,7 +322,7 @@ button {
   margin-top: 50px;
 }
 
-.test.button + .test.button {
+.test.button.nav + .test.button.nav {
   margin-left: 50px;
 }
 
@@ -348,6 +374,21 @@ button {
       width: 0;
       transition: none;
     }    
+  }
+}
+
+.test.button.more {
+  position: relative;
+  
+  &::after {
+    content: 'Оставьте ваши контакты и мы свяжемся с вами.';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+    font-variant: normal;
+    font-size: 0.6em;
+    opacity: 0.7;
   }
 }
 
@@ -429,6 +470,10 @@ button {
       background-image: url(../img/logo.svg);
     }    
   }
+  
+  .test.choice::before {
+    background-color: #000;
+  }  
 
   .test.form.pair.input:focus ~ .test.form.pair.text, .test.form.pair.input:checked ~ .test.form.pair.text {
     font-weight: 700;
@@ -449,7 +494,7 @@ button {
   }
   
   .switch.label {
-    background-color: #794119;
+    background-color: #eadcbd;
 
     &:before {
       content: 'Переключить оформление на тёмное?';
@@ -479,6 +524,10 @@ button {
     }     
   }
   
+  .test.choice::before {
+    background-color: #fff;
+  }    
+  
   .test.form.pair.input:focus ~ .test.form.pair.text, .test.form.pair.input:checked ~ .test.form.pair.text, .test.paragraph.result .result.profession{
     font-weight: 700;
   }  
@@ -506,13 +555,15 @@ button {
   }
   
   .switch.label {
-    background-color: #857b94;
+    background-color: #545e73;
   
     &::before {
       content: 'Переключить оформление на яркое?';
     }  
   }
 }
+
+/* Media */
 
 @media (hover: hover) {
   .switch.label::before {

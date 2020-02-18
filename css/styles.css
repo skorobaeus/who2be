@@ -70,7 +70,12 @@ body {
   position: relative;
 }
 
-h1 {
+/* Text sizes and distances*/
+.test {
+  font-size: 1.8rem;
+}
+
+h1.heading {
   font-size: 2.9rem;
   font-weight: 700;
 }
@@ -79,8 +84,13 @@ h1:first-child, p:first-child {
   margin-top: 0;
 }
 
-p, span, ul > li {
+.greeting.message p, .greeting.message span, .greeting.message ul > li {
   font-size: 1.8rem;
+  line-height: 120%;
+}
+
+.resulting.message p, .resulting.message span, .resulting.message ul > li {
+  font-size: 1.6rem;
   line-height: 120%;
 }
 
@@ -93,10 +103,10 @@ button {
   font-variant: small-caps;
 }
 
-.test.paragraph.result {
-  font-size: 1.2em;
+.test.paragraph.accent {
+  font-size: 1.1em;
 }
-.test.paragraph.result .result.profession {
+.test.paragraph.accent .accent.profession {
   display: block;
   font-size: 1em;
   font-weight: 700;
@@ -114,6 +124,7 @@ button {
   margin-top: 0.9rem;
 }
 
+/* Common styles */
 .wrap {
   display: flex;
   align-items: center;
@@ -174,6 +185,18 @@ button {
   transform: rotate(90deg);
   transform-origin: left top;
   transition: background-image 1s;
+}
+
+.test.choice {
+  position: relative;
+  margin-top: 80px;
+}
+.test.choice::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: -40px;
 }
 
 /* Pairs (test questions) */
@@ -254,7 +277,7 @@ button {
   margin-top: 50px;
 }
 
-.test.button + .test.button {
+.test.button.nav + .test.button.nav {
   margin-left: 50px;
 }
 
@@ -301,6 +324,20 @@ button {
 .test.button:disabled:hover::before {
   width: 0;
   transition: none;
+}
+
+.test.button.more {
+  position: relative;
+}
+.test.button.more::after {
+  content: 'Оставьте ваши контакты и мы свяжемся с вами.';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20px;
+  font-variant: normal;
+  font-size: 0.6em;
+  opacity: 0.7;
 }
 
 /* Pie result */
@@ -374,6 +411,9 @@ button {
 .wrap.orange .test.container::after {
   background-image: url(../img/logo.svg);
 }
+.wrap.orange .test.choice::before {
+  background-color: #000;
+}
 .wrap.orange .test.form.pair.input:focus ~ .test.form.pair.text, .wrap.orange .test.form.pair.input:checked ~ .test.form.pair.text {
   font-weight: 700;
 }
@@ -389,7 +429,7 @@ button {
   background-color: #000000;
 }
 .wrap.orange .switch.label {
-  background-color: #794119;
+  background-color: #eadcbd;
 }
 .wrap.orange .switch.label:before {
   content: 'Переключить оформление на тёмное?';
@@ -413,6 +453,9 @@ button {
 .wrap.violet .test.container::after {
   background-image: url(../img/logo-inverted.svg);
 }
+.wrap.violet .test.choice::before {
+  background-color: #fff;
+}
 .wrap.violet .test.form.pair.input:focus ~ .test.form.pair.text, .wrap.violet .test.form.pair.input:checked ~ .test.form.pair.text, .wrap.violet .test.paragraph.result .result.profession {
   font-weight: 700;
 }
@@ -434,12 +477,13 @@ button {
   background-color: #FFFFFF;
 }
 .wrap.violet .switch.label {
-  background-color: #857b94;
+  background-color: #545e73;
 }
 .wrap.violet .switch.label::before {
   content: 'Переключить оформление на яркое?';
 }
 
+/* Media */
 @media (hover: hover) {
   .switch.label::before {
     content: '';

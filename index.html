@@ -14,7 +14,7 @@
         
         <input type="checkbox" class="switch input" id="switch" checked><label class="switch label" for="switch">Переключить тему</label>
         
-        <div class="test message" STYLE="DISPLAY: NONE">
+        <div class="test greeting message" STYLE="DISPLAY: NONE">
           <h1 class="test heading">Какое направление в IT выбрать?</h1>
           <div class="test text">
             <p class="test paragraph">Пройдите тестирование и узнайте, какие профессии в программировании вам подходят!</p>
@@ -23,18 +23,21 @@
           </div>        
         </div>
         
-        <div class="test message">
+        <div class="test resulting message">
           <h1 class="test heading">Поздравляю, вы прошли тест!</h1>
           <div class="test text">
-            <p class="test paragraph result">Вам подходит направление в IT:<span class="result profession">Фронтенд-разработчик – 42%</span></p>
+            <p class="test paragraph accent">Вам подходит направление в IT:<span class="accent profession">Фронтенд-разработчик – 42%</span></p>
             <p class="test paragraph">Фронтенд-разработчик – программист, создающий внешний пользовательский функционал web-сайта и отвечающий за его соответствие макету дизайна и за единообразное отображение страниц в любом браузере. Это специалист, от которого зависит, насколько удобным и функциональным будет интерфейс сайта или приложения. </p>
             <p class="test paragraph">В некоторых случаях, если макет не отражает деталей концепта, фронтенд-разработчик может проявлять себя в качестве дизайнера, когда от сотрудника требуется верстка уже готового макета (с помощью связки HTML+CSS).</p>
-            <p class="test paragraph">Рекомендуем продолжить изучать программирование на курсах:</p>
+          </div>  
+            
+          <div class="test choice">
+            <p class="test paragraph accent">Выберете курс ниже и начните изучать программирование с подходящей вам программы:</p>
             <ul class="test list">
               <li><a href="#">Frontend-разработчик</a></li>
               <li><a href="#">React: библиотека фронтенд-разработки</a></li>
             </ul>
-                      
+
             <ul id="legend">
               <li>
                 <span class="profession">QA- специалист</span>
@@ -52,9 +55,9 @@
               </li>
             </ul>  
             <div id="pie"></div>
-            
-            <p class="test paragraph">Также вы можете обратить внимание на профессию Фронтент-разработчик: <a href="#">Frontend-разработчик</a>, <a href="#">React: библиотека фронтенд-разработки</a>.</p>      
-          </div>        
+
+            <p class="test paragraph">Также вы можете обратить внимание на профессию Фронтент-разработчик: <a href="#">Frontend-разработчик</a>, <a href="#">React: библиотека фронтенд-разработки</a>.</p>
+          </div>
         </div>        
         
         <form class="test form" STYLE="DISPLAY: NONE">
@@ -64,9 +67,10 @@
           <label class="test form pair label"><input class="test form pair input" type="radio" name="pair" tabindex="1" checked><span class="test form pair text">Делать из макетов дизайнеров красивые и аккуратные сайты</span></label>      
         </form>  
         
-        <div class="test buttons" STYLE="DISPLAY: NONE">
-          <button class="test button" tabindex="0" disabled><span>Назад</span></button>
-          <button class="test button" tabindex="1"><span>Далее</span></button>
+        <div class="test buttons">
+          <button class="test button nav" tabindex="0" disabled STYLE="DISPLAY: NONE"><span>Назад</span></button>
+          <button class="test button nav" tabindex="1" STYLE="DISPLAY: NONE"><span>Далее</span></button>
+          <button class="test button more" tabindex="1"><span>Узнать больше</span></button>
         </div>
         
       </div>
