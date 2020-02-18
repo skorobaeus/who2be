@@ -330,7 +330,7 @@ button {
   display: block;
   border-radius: 20px;
   position: absolute;
-  bottom: 30px;
+  top: 30px;
   left: calc(50% - 25px);
   font-size: 0;
 }
@@ -396,7 +396,7 @@ button {
 }
 
 .wrap.violet {
-  font-weight: 400;
+  font-weight: 300;
   background-color: #2A364C;
   background-image: url(../img/violet.svg);
   color: #FFFFFF;
@@ -408,13 +408,13 @@ button {
   color: #89beff;
 }
 .wrap.violet .test.container {
-  background-color: rgba(69, 66, 87, 0.4);
+  background-color: #333f59;
 }
 .wrap.violet .test.container::after {
   background-image: url(../img/logo-inverted.svg);
 }
 .wrap.violet .test.form.pair.input:focus ~ .test.form.pair.text, .wrap.violet .test.form.pair.input:checked ~ .test.form.pair.text, .wrap.violet .test.paragraph.result .result.profession {
-  font-weight: 900;
+  font-weight: 700;
 }
 .wrap.violet .test.form.pair.text::before {
   border-color: #FFFFFF;
@@ -423,7 +423,7 @@ button {
   border-color: #FFFFFF;
 }
 .wrap.violet .test.button {
-  font-weight: 400;
+  font-weight: 300;
   border-color: #FFFFFF;
   color: #FFFFFF;
 }
@@ -478,24 +478,29 @@ button {
   }
 
   .wrap {
-    padding: 10px 10px 60px 10px;
+    padding: 10px 10px 30px 10px;
     transition: none;
   }
   .wrap::after {
     right: 10px;
+    bottom: 7px;
     max-width: calc(50% - 50px);
+  }
+
+  .switch.label {
+    top: 11px;
   }
 
   .test.container {
     width: 100%;
-    padding: 80px 25px;
+    padding: 90px 25px 80px;
     min-height: auto;
   }
 
   .test.container::before {
     left: 25px;
-    top: 35px;
-    font-size: 2rem;
+    top: 45px;
+    font-size: 1.9rem;
     transform: inherit;
   }
 
