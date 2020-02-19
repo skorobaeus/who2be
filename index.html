@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест: Какое направление в IT выбрать?</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.min.css">
+  </head>
+  <body onload="jsonLoading()">
+    <div class="wrap">
+      <div class="test container">
+        
+        <input type="checkbox" class="switch input" id="switch" checked><label class="switch label" for="switch">Переключить тему</label>
+        
+        <div class="test greeting message" id="greeting">
+          <h1 class="test heading">Какое направление в IT выбрать?</h1>
+          <div class="test text">
+            <p class="test paragraph">Пройдите тестирование и узнайте, какие профессии в программировании вам подходят!</p>
+            <p class="test paragraph">Тест поможет вам сориентироваться в IT-профессиях и покажет те, которые вам больше всего подходят. Прохождение тестирования займет не более 2-3 минут.</p>
+            <p class="test paragraph">Чтобы начать прохождение теста, нажмите на «Далее» ниже.</p>
+          </div>        
+        </div>
+        
+        <div class="test resulting message" id="resultForm" hidden>
+          <h1 class="test heading">Поздравляю, вы прошли тест!</h1>
+          <div class="test text">
+            <p class="test paragraph accent">Вам подходит направление в IT:<span class="accent profession" id="resultProfession">Фронтенд-разработчик – 42%</span></p>
+            <p class="test paragraph" id="firstProfParagraph">Фронтенд-разработчик – программист, создающий внешний пользовательский функционал web-сайта и отвечающий за его соответствие макету дизайна и за единообразное отображение страниц в любом браузере. Это специалист, от которого зависит, насколько удобным и функциональным будет интерфейс сайта или приложения. </p>
+            <p class="test paragraph" id="secondProfParagraph">В некоторых случаях, если макет не отражает деталей концепта, фронтенд-разработчик может проявлять себя в качестве дизайнера, когда от сотрудника требуется верстка уже готового макета (с помощью связки HTML+CSS).</p>
+          </div>  
+            
+          <div class="test choice">
+            <p class="test paragraph accent">Выберете курс ниже и начните изучать программирование с подходящей вам программы:</p>
+            <ul class="test list">
+              <li><a href="#">Frontend-разработчик</a></li>
+              <li><a href="#">React: библиотека фронтенд-разработки</a></li>
+            </ul>
+
+            <ul id="legend" class="hidden">
+              <li>
+                <span class="profession">QA- специалист</span>
+                <span class="points">1</span>
+              </li>              
+              <li>
+                <span class="profession">Разработчик мобильных приложений</span>
+                <span class="points">3</span></li>
+              <li>
+                <span class="profession">Frontend- разработчик</span>
+                <span class="points">7</span></li>
+              <li>
+                <span class="profession">Fullstack- разработчик</span>
+                <span class="points">1</span>
+              </li>
+            </ul>  
+            <div id="pie"></div>
+
+            <p class="test paragraph" id="secondprof">Также вы можете обратить внимание на профессию Фронтент-разработчик: <a href="#">Frontend-разработчик</a>, <a href="#">React: библиотека фронтенд-разработки</a>.</p>
+            <ul class="test list">
+              <li>Frontend-разработчик с нуля</li>
+            </ul>
+          </div>
+        </div>        
+        
+        <form class="test form hidden" id=questionForm>
+          <p class="test form message">Выберите одно из двух утверждений, которое вам ближе:</p>
+          <span class="test form counter" id=qnum>4</span>
+          <label class="test form pair label"><input class="test form pair input" onclick="radioupd()" type="radio" name="pair" tabindex="1"><span class="test form pair text" name="answer">Работать над созданием приложений с виртуальной или дополненной реальностью</span></label>
+          <label class="test form pair label"><input class="test form pair input" onclick="radioupd()" type="radio" name="pair" tabindex="1" checked><span class="test form pair text" name="answer">Делать из макетов дизайнеров красивые и аккуратные сайты</span></label>      
+        </form>  
+        
+        <div class="test buttons">
+          <button class="test button nav" tabindex="0" id="back" onclick="backClick()" disabled><span>Назад</span></button>
+          <button class="test button nav" tabindex="1" id="next" onclick="nextClick()"><span>Далее</span></button>
+          <button class="test button more hidden" tabindex="1" id="modal" onclick="popupDisplay()"><span>Узнать больше</span></button>
+        </div>
+        
+      </div>  
+    </div>
+    
+    <div class="popup wrap hidden" id="popupwindow" hidden>
+      <div class="popup container">
+        <button class="popup close"><span class="visually-hidden">Закрыть окно</span></button>
+        
+        <form class="popup form container" id="mailform" action="./mail.php" method="POST">
+          <div class="popup form group">
+            <p class="popup form message">Как вас зовут?</p>
+            <label><span class="visually-hidden">Введите ваше имя</span><input class="popup form input" name="name" type="text" placeholder="Ваше имя"></label>
+          </div> 
+          <div class="popup form group">
+            <p class="popup form message">Как с вами связаться?</p>
+            <label><span class="visually-hidden">Адрес вашей электронной почты</span><input class="popup form input" name="mail" type="text" placeholder="Email"></label>
+            <p class="popup form message minor">или</p>
+            <label><span class="visually-hidden">Номер вашего телефона</span><input class="popup form input" type="text" name="phone" placeholder="Телефон"></label>
+            <label><span class="visually-hidden">Баллы Frontend</span><input class="popup form input hidden" type="text" name="front"></label>
+            <label><span class="visually-hidden">Баллы QA-Тестирование</span><input class="popup form input hidden" type="text" name="qa"></label>
+            <label><span class="visually-hidden">Баллы Мобильная разработка</span><input class="popup form input hidden" type="text" name="mob"></label>
+            <label><span class="visually-hidden">Баллы Fullstack-разработка</span><input class="popup form input hidden" type="text" name="full"></label>
+
+
+
+
+          </div>  
+          <button class="popup form button"><span>Отправить</span></button>
+        </form>
+        
+        <div class="popup confirm container hidden" id="confirm">
+          <p class="popup paragraph accent">Спасибо!</p>
+          <p class="popup paragraph">Скоро мы с вами свяжемся и подробнее познакомим с профессиями в программировании.</p>
+        </div>
+      </div>    
+    </div>
+    <script src="styles.js"></script>    
+    <script src="logic.js"></script>
+  </body>
+</html>
