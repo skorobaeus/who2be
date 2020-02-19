@@ -103,8 +103,9 @@ body {
 
 /* Text sizes and distances*/
 
-.test {
+.test, .popup {
   font-size: 1.8rem;
+  line-height: 120%;
 }
 
 h1.heading {
@@ -116,14 +117,8 @@ h1:first-child, p:first-child {
   margin-top: 0;
 }
 
-.greeting.message p, .greeting.message span, .greeting.message ul>li {
-  font-size: 1.8rem;
-  line-height: 120%;
-}
-
-.resulting.message p, .resulting.message span, .resulting.message ul>li {
+.resulting.message, .resulting.message .test.paragraph {
   font-size: 1.6rem;
-  line-height: 120%;
 }
 
 p + p {
@@ -145,6 +140,10 @@ button {
   }
 }
 
+.popup.paragraph.accent {
+  font-size: 1.1em;
+}
+
 .test.paragraph + .test.list, .test.list + .test.paragraph {
   margin-top: 1.2rem;
 }
@@ -158,6 +157,18 @@ button {
 }
 
 /* Common styles */
+
+.hidden {
+  display: none!important;
+}
+
+.visually-hidden {
+  width: 1px;
+  height: 1px;
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+  font-size: 0;
+}
 
 .wrap {
   display: flex;
@@ -326,7 +337,7 @@ button {
   margin-left: 50px;
 }
 
-.test.button {
+.test.button, .popup.button {
   position: relative;
   flex-grow: 1;
   padding: 1.3rem;
@@ -362,7 +373,7 @@ button {
   } 
 }
 
-.test.button:disabled {
+.test.button:disabled, .popup.button:disabled {
   opacity: 0.4;
   
   &:hover {
@@ -401,9 +412,126 @@ button {
   font-size: 1.2rem;
 }
 
-#legend {
-  display: none;
+/* Попап */
+
+.popup {
+  font-weight: 300;
 }
+
+.popup.accent {
+  font-weight: 700;
+}
+
+.popup.minor {
+  font-size: 0.8em;
+}
+
+.popup.wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.40);
+  z-index: 100;
+}
+
+.popup.container {
+  position: relative;
+  width: 500px;
+}
+
+.popup.close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: none;
+  z-index: 101;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 48%;
+    left: 20%;
+    width: 60%;
+    height: 10%;
+    transform: rotate(45deg);
+    transform-origin: center;
+    background-color: #000;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 48%;
+    left: 20%;
+    width: 60%;
+    height: 10%;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    background-color: #000;
+  }
+  
+  &:hover {
+    cursor: pointer;
+  }
+  
+}
+
+.popup.form.container, .popup.confirm.container {
+  background-color: #fff;
+  padding: 80px 60px;
+}
+
+.popup.confirm.container {
+  text-align: center;
+
+//  Блок можно, конечно, перекрасить в зелёный, но смысла в этом нет.
+//  background-color: #409872;
+//  color: #fff;  
+}
+
+.popup.form.group + .popup.form.group {
+  margin-top: 2.8rem;
+}
+
+.popup.form.message {
+  margin: 1rem 0;
+  
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.popup.input {
+  width: 100%;
+  padding: 1rem;
+  background-color: #f3f3f3;
+  border: 1px solid #dadada;
+}
+
+.popup.button {
+  width: 100%;
+  margin-top: 2.8rem;
+ 
+  &:hover {
+    color: #fff;
+  }
+
+  &::before {
+    background-color: #000;
+  }
+}
+
+
 
 /* Theme switcher */
 
@@ -613,8 +741,7 @@ button {
       right: 10px;
       bottom: 7px;
       max-width: calc(50% - 50px);
-    }     
-    
+    }  
   }  
   
   .switch.label {
@@ -623,7 +750,7 @@ button {
   
   .test.container {
     width: 100%;
-    padding: 90px 25px 80px;
+    padding: 90px 25px 40px;
     min-height: auto;
   }
   
@@ -635,13 +762,7 @@ button {
   }  
   
   .test.container::after {
-    top: auto;
-    bottom: 20px;
-    left: calc(50% - 67px);
-    width: 106px;
-    height: 22px;
-    background-size: 106px 22px;
-    transform: inherit;
+    content: initial;
   }  
   
   .test.form.counter {
@@ -653,9 +774,23 @@ button {
     margin-top: 25px;
   }  
   
-  .test.button + .test.button {
+  .test.button.nav + .test.button.nav {
     margin-left: 20px;
   } 
+  
+  .popup.container {
+    width: 100%;
+    
+    .popup.close {
+      right: 0;
+    }
+    
+    .popup.confirm.container, .popup.form.container {
+      padding: 60px 40px;
+    }    
+    
+  }  
+  
 }
 
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {

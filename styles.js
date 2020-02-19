@@ -5,6 +5,9 @@ const width = movementStrength / window.innerWidth;
 const switcher = document.querySelector('.switch.label');
 const switcherCheckbox = document.querySelector('.switch.input');
 const buttons = document.querySelectorAll('.test.button');
+const close = document.querySelector('.popup.close');
+const popupWrap = document.querySelector('.popup.wrap');
+const more = document.querySelector('.test.button.more');
 
 wrap.addEventListener('mousemove', event => {
   let pageX = event.pageX - (window.innerWidth / 2);
@@ -30,6 +33,22 @@ Array.from(buttons).forEach(button => {
   button.addEventListener('click', event => {
     button.blur();                        
   })
+});
+
+close.addEventListener('click', event => {
+  event.preventDefault();
+  popupWrap.classList.toggle('hidden');
+});
+
+popupWrap.addEventListener('click', event => {
+  if (event.target === popupWrap) {
+    popupWrap.classList.toggle('hidden');
+  }
+});
+
+more.addEventListener('click', event => {
+  event.preventDefault();
+  popupWrap.classList.toggle('hidden');
 });
 
 window.addEventListener('load', detectColorScheme());
