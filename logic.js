@@ -195,7 +195,7 @@ function submitHandler(e) {
     }
   };
 
-  request.open(this.method, "http://epic.spb.ru/mail.php", true);
+  request.open(this.method, "https://epic.spb.ru/mail.php", true);
 
   let email = new FormData(mailform);
   for (let key of email.keys()) request.send(email);
