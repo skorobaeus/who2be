@@ -86,13 +86,13 @@
         <form class="popup form container" id="mailform" action="https://epic.spb.ru/mail.php" method="POST">
           <div class="popup form group">
             <p class="popup form message">Как вас зовут?</p>
-            <label><span class="visually-hidden">Введите ваше имя</span><input class="popup form input" name="name" type="text" placeholder="Ваше имя"></label>
+            <label><span class="visually-hidden">Введите ваше имя</span><input class="popup form input" name="name" onchange="fieldCheck()" type="text" placeholder="Ваше имя"></label>
           </div> 
           <div class="popup form group">
             <p class="popup form message">Как с вами связаться?</p>
-            <label><span class="visually-hidden">Адрес вашей электронной почты</span><input class="popup form input" name="mail" type="email" placeholder="Email"></label>
+            <label><span class="visually-hidden">Адрес вашей электронной почты</span><input class="popup form input" name="mail" type="email" placeholder="Email" onchange="fieldCheck()"></label>
             <p class="popup form message minor">или</p>
-            <label><span class="visually-hidden">Номер вашего телефона</span><input class="popup form input" type="tel" name="phone" placeholder="Телефон"></label>
+            <label><span class="visually-hidden">Номер вашего телефона</span><input class="popup form input" type="tel" name="phone" placeholder="Телефон" onchange="fieldCheck()"></label>
             <label><span class="visually-hidden">Баллы Frontend</span><input class="popup form input hidden" type="text" name="front"></label>
             <label><span class="visually-hidden">Баллы QA-Тестирование</span><input class="popup form input hidden" type="text" name="qa"></label>
             <label><span class="visually-hidden">Баллы Мобильная разработка</span><input class="popup form input hidden" type="text" name="mob"></label>
@@ -111,6 +111,7 @@
         </div>
       </div>    
     </div>
+    <script src="validate.min.js"></script>
     <script src="styles.js"></script>    
     <script src="logic.js"></script>
   </body>

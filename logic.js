@@ -1,3 +1,4 @@
+console.log(validate.single("foo", {presence: true, email: true}));
 let selected;
 let data;
 let oReq = new XMLHttpRequest();
@@ -17,6 +18,12 @@ let questionForm = document.getElementById("questionForm");
 let greeting = document.getElementById("greeting");
 let points = document.getElementsByClassName("points");
 let list = document.getElementsByClassName("list");
+let username = document.getElementsByName("name")[0];
+let telephone = document.getElementsByName("phone")[0];
+let mailAdress = document.getElementsByName("mail")[0];
+let span = document.createElement('span');
+let submitButton = document.getElementsByName("submit")[0];
+
 
 function resultCounting() {
   for (let i = 0; i < answersArr.length; i++) {
@@ -211,13 +218,40 @@ function sendButton() {
 }
 
 function fieldCheck() {
+  console.log();
+  let phonePattern = /^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/;
+  
+
+  span.id ="validator";
   if (
-    document.getElementsByName("name")[0].value != "" &&
-    (document.getElementsByName("phone")[0].value != "" ||
-      document.getElementsByName("mail")[0].value != "")
+    username.value != "" &&
+    (telephone.value != "" || mailAdress.value != "")
   ) {
-    document.getElementsByName("submit")[0].disabled = false;
+    submitButton.disabled = false;
   } else {
-    document.getElementsByName("submit")[0].disabled = true;
+    submitButton.disabled = true;
   }
+  console.log(validate.single(mailAdress.value,{presence: true, email: true}));
+  if (validate.single(mailAdress.value,{presence: true, email: true}) != undefined) {
+span.textContent ="Ваш e-mail невалиден";
+span.style = "color:red";
+
+  } else {
+    span.textContent ="";
+    submitButton.disabled = false;
+  }
+  mailAdress.after(span);
+  console.log(typeof(telephone));
+  console.log(validate({zipCode: telephone}, {zipCode: {format: phonePattern}}));  
+  let mobnumber = telephone.value;
+if(validate({mobNum: mobnumber}, {mobNum: {format: phonePattern}}) != undefined) {
+  span.textContent ="Номер телефона неверен";
+span.style = "color:red";
+submitButton.disabled = true;
+  } else {
+    span.textContent ="";
+    submitButton.disabled = false;
+  }
+  document.getElementsByName("phone")[0].after(span);
 }
+
