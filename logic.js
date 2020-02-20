@@ -196,7 +196,7 @@ function submitHandler(e) {
     }
   }
   
-  request.open(this.method, this.action, true);
+  request.open(this.method, 'https://epic.spb.ru/mail.php', true);
   
   let email = new FormData(mailform);
   console.log(email)
