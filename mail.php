@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: http://epic.spb.ru/");
     if (isset($_POST['name'])) {$name = $_POST['name'];}
 
 $recepient = "mokatev@yandex.ru";
