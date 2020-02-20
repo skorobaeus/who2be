@@ -1,9 +1,11 @@
 <?php
-header("Access-Control-Allow-Origin: http://epic.spb.ru/");
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
     if (isset($_POST['name'])) {$name = $_POST['name'];}
 
 $recepient = "mokatev@yandex.ru";
-$sitename = "Тестовое письмецо";
+$sitename = "Тест на профориентацию";
 
 $name = trim($_POST["name"]);
 $mail = trim($_POST["mail"]);
@@ -28,6 +30,6 @@ $message = " <strong>Имя студента</strong>: $name <br>
 echo $message;
 
 print_r($_POST);
-$pagetitle = "Новая заявка с сайта \"$sitename\"";
-mail($recepient, $pagetitle, $message, "Content-type: text/plain; charset=\"utf-8\"\n From: $recepient");
+$pagetitle = "Тестовое письмо \"$sitename\"";
+mail($recepient, $pagetitle, $message, "Content-type: text/html; charset=\"utf-8\"\n From: $recepient");
 ?>
