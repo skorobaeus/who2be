@@ -1,10 +1,13 @@
 <?php
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+$headers .= 'From: Робот Теста на проф.ориентацию <noreply@user.ru>'. "\r\n";
 
     if (isset($_POST['name'])) {$name = $_POST['name'];}
 
-$recepient = "mokatev@yandex.ru";
+$recepient = "mokatev@yandex.ru","a.zverev@netology.ru","solar.rust@gmail.com";
+// $recepient = " a.avtonomova@netology.ru";
+
 $sitename = "Тест на профориентацию";
 
 $name = trim($_POST["name"]);
@@ -22,14 +25,11 @@ $message = " <strong>Имя студента</strong>: $name <br>
 <strong>Баллы Фронтенд:</strong> $front <br>
 <strong>Баллы QA:</strong> $qa <br>
 <strong>Баллы Мобильной разработки:</strong> $mob <br>
-<strong>FullStack:</strong> $full <br>"
+<strong>Баллы FullStack:</strong> $full <br>
+это письмо отправлено автомтически, пожалуйста, не отвечайте на него";
 
-
-
-;
-echo $message;
 
 print_r($_POST);
-$pagetitle = "Тестовое письмо \"$sitename\"";
+$pagetitle = "Результат теста на проф.ориентацию студента \"$name\"";
 mail($recepient, $pagetitle, $message, $headers);
 ?>

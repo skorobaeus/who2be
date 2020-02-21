@@ -1,4 +1,3 @@
-console.log(validate.single("foo", {presence: true, email: true}));
 let selected;
 let data;
 let oReq = new XMLHttpRequest();
@@ -203,10 +202,10 @@ function submitHandler(e) {
     }
   };
 
-  request.open(this.method, 'https://epic.spb.ru/mail.php', true);
+  request.open(this.method, this.action, true);
 
   let email = new FormData(mailform);
-  for (let key of email.keys()) request.send(email);
+  request.send(email);
 }
 
 document
@@ -219,7 +218,6 @@ function sendButton() {
 }
 
 function fieldCheck() {
-  console.log();
   let phonePattern = /^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/;
   
 
