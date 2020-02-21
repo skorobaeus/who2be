@@ -61,6 +61,7 @@ function detectColorScheme() {
   }
   wrap.classList.toggle(scheme);
 }
+
 /* Pie result */
 /* Creating and configuring pie */
 function createPie() {
@@ -94,17 +95,14 @@ function paintPie() {
   const blackLines = document.querySelectorAll('g[role="menu"] g[stroke="#000000"]');
   const whiteLetters = document.querySelectorAll('g[role="menu"] g[fill="#ffffff"]');
   const whiteLines = document.querySelectorAll('g[role="menu"] g[stroke="#ffffff"]');
-  if(scheme === 'violet') {
-    fill(whiteLetters, "#ffffff");
-    stroke(whiteLines, "#ffffff");
-  }
+  
   if (blackLetters.length != 0 && blackLines.length != 0) {
-    fill(blackLetters, "#000000");
-    stroke(blackLines, "#000000");
+    fill(blackLetters, "#ffffff");
+    stroke(blackLines, "#ffffff");
   }
   if (whiteLetters.length != 0) {
-    fill(whiteLetters, "#ffffff");
-    stroke(whiteLines, "#ffffff");
+    fill(whiteLetters, "#000000");
+    stroke(whiteLines, "#000000");
   }   
 }
 
