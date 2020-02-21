@@ -90,6 +90,7 @@ function createPie() {
   pieSeries.labels.template.truncard = true;
   
   if (wrap.classList.contains('violet')) {
+    console.log('hi');
     pieSeries.labels.template.fill = am4core.color("#fff");  
     pieSeries.ticks.template.stroke = am4core.color("#fff");  
   } else {
