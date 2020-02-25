@@ -74,16 +74,16 @@
           <button class="test button nav" tabindex="0" id="back" onclick="backClick()" disabled><span>Назад</span></button>
           <button class="test button nav" tabindex="1" id="next" onclick="nextClick()"><span>Далее</span></button>
           <button class="test button more hidden" tabindex="1" id="modal" onclick="popupDisplay()"><span>Узнать больше</span></button>
-        </div>
-        
+        </div>        
       </div>  
+      <a class="credits" href="https://netology.ru/" target="_blank"></a>
     </div>
     
     <div class="popup wrap hidden" id="popupwindow" hidden>
       <div class="popup container">
         <button class="popup close"><span class="visually-hidden">Закрыть окно</span></button>
         
-        <form class="popup form container" id="mailform" action="https://epic.spb.ru/mail.php" method="POST">
+        <form class="popup form container" id="mailform" action="./mail.php" method="POST">
           <div class="popup form group">
             <p class="popup form message">Как вас зовут?</p>
             <label><span class="visually-hidden">Введите ваше имя</span><input class="popup form input" name="name" onchange="fieldCheck()" type="text" placeholder="Ваше имя"></label>
@@ -101,7 +101,10 @@
 
 
 
-          </div>  
+          </div>
+          <div class="popup form group">
+            <label><input class="popup checkbox" type="checkbox" value="" id="agreement" onchange="fieldCheck()"><span class="popup form message minor">Я принимаю условия <a href="https://netology.ru/legal/11">политики конфиденциальности</a> и <a href="https://netology.ru/legal/6">пользовательского соглашения</a>.</span></label>
+          </div>
           <button class="popup form button" id="submit" name="submit" onclick="sendButton()" disabled><span>Отправить</span></button>
         </form>
         

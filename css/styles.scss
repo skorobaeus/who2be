@@ -182,7 +182,7 @@ button {
   background-repeat: no-repeat;
   transition: background-image 1s, background-size 1s, color 1s, font-weight 0.2s;
   
-  &::after {
+  .credits {
     content: '';
     position: absolute;
     bottom: 29px;
@@ -246,6 +246,11 @@ button {
     height: 2px;
     top: -40px;
   }  
+}
+
+.unscrollable {
+  overflow: hidden;
+  height: 100vh;
 }
 
 /* Pairs (test questions) */
@@ -444,6 +449,11 @@ button {
   width: 500px;
 }
 
+.popup.checkbox {
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}
+
 .popup.close {
   position: absolute;
   top: -15px;
@@ -484,6 +494,10 @@ button {
     cursor: pointer;
   }
   
+  &:focus {
+    outline: none;
+  }
+  
 }
 
 .popup.form.container, .popup.confirm.container {
@@ -492,11 +506,7 @@ button {
 }
 
 .popup.confirm.container {
-  text-align: center;
-
-//  Блок можно, конечно, перекрасить в зелёный, но смысла в этом нет.
-//  background-color: #409872;
-//  color: #fff;  
+  text-align: center; 
 }
 
 .popup.form.group + .popup.form.group {
@@ -583,7 +593,7 @@ button {
   background-image: url(../img/orange.svg);
   color: #000000;
   
-  &::after {
+  .credits {
     background-image: url(../img/made-by.svg);
   }
   
@@ -636,7 +646,7 @@ button {
   background-image: url(../img/violet.svg);
   color: #FFFFFF;
   
-  &::after {
+  .credits {
     background-image: url(../img/made-by-inverted.svg);
   }  
   
@@ -716,9 +726,9 @@ button {
   }
 }
 
-@media (min-width: 641px) and (max-width: 1000px) { 
+@media (min-width: 641px) and (max-width: 1000px) {
   
-  .wrap::after {
+  .wrap .credits {
     right: calc((100% - 90% + 12px)/ 2);
   }  
   
@@ -737,7 +747,7 @@ button {
     padding: 10px 10px 30px 10px;
     transition: none;
     
-    &::after {
+    .credits {
       right: 10px;
       bottom: 7px;
       max-width: calc(50% - 50px);

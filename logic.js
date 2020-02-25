@@ -152,6 +152,7 @@ function resultDisplay(resArr) {
   points[2].textContent = frontendDeloveperScale;
   points[3].textContent = fullstackDeloveperScale;
   createPie();
+  paintPie();
   linkDisplay(resArr);
   document.getElementById("secondprof").textContent =
     `Также обратите внимание на профессию ` +
@@ -221,19 +222,12 @@ function fieldCheck() {
   let phonePattern = /^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/;
   
 
-  if (
-    username.value != "" &&
-    (telephone.value != "" || mailAdress.value != "")
-  ) {
-    submitButton.disabled = false;
-  } else {
-    submitButton.disabled = true;
-  }
+ 
   if (validate.single(mailAdress.value,{presence: true, email: true}) != undefined && mailAdress.value != "") {
     mailValidate.textContent = "Ваш e-mail невалиден";
 mailValidate.style = "color:red";
 submitButton.disabled = true;
-  } else {
+  } else if (username.value != "") {
     mailValidate.textContent ="";
     submitButton.disabled = false;
   }
@@ -244,10 +238,19 @@ if(validate({mobNum: mobnumber}, {mobNum: {format: phonePattern}}) != undefined 
 phoneValidate.textContent ="Номер телефона неверен";
 phoneValidate.style = "color:red";
 submitButton.disabled = true;
-} else {
+} else if (username.value != "") {
   phoneValidate.textContent ="";
   submitButton.disabled = false;
 }
 telephone.after(phoneValidate);
+if (
+  username.value != "" &&
+  (telephone.value != "" || mailAdress.value != "") && document.getElementById("agreement").checked === true)
+ {
+  submitButton.disabled = false;
+} else {
+  submitButton.disabled = true;
 }
+}
+
 

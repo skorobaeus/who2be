@@ -1,11 +1,11 @@
 <?php
 $headers  = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+$headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 $headers .= 'From: Робот Теста на проф.ориентацию <noreply@user.ru>'. "\r\n";
 
     if (isset($_POST['name'])) {$name = $_POST['name'];}
 
-$recepient = "mokatev@yandex.ru","a.zverev@netology.ru","solar.rust@gmail.com";
+$recepient = 'mokatev@yandex.ru, a.zverev@netology.ru, solar.rust@gmail.com';
 // $recepient = " a.avtonomova@netology.ru";
 
 $sitename = "Тест на профориентацию";
