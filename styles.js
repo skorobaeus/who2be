@@ -8,6 +8,7 @@ const buttons = document.querySelectorAll('.test.button');
 const close = document.querySelector('.popup.close');
 const popupWrap = document.querySelector('.popup.wrap');
 const more = document.querySelector('.test.button.more');
+const html = document.querySelector('html');
 
 wrap.addEventListener('mousemove', event => {
   let pageX = event.pageX - (window.innerWidth / 2);
@@ -38,17 +39,20 @@ Array.from(buttons).forEach(button => {
 close.addEventListener('click', event => {
   event.preventDefault();
   popupWrap.classList.toggle('hidden');
+  html.classList.toggle('unscrollable');  
 });
 
 popupWrap.addEventListener('click', event => {
   if (event.target === popupWrap) {
     popupWrap.classList.toggle('hidden');
+    html.classList.toggle('unscrollable');    
   }
 });
 
 more.addEventListener('click', event => {
   event.preventDefault();
   popupWrap.classList.toggle('hidden');
+  html.classList.toggle('unscrollable');
 });
 
 window.addEventListener('load', detectColorScheme());
