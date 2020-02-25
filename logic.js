@@ -75,6 +75,10 @@ function showQuestion() {
     qnum.textContent = `${questNum + 1}`;
     variant1.textContent = data["answersArray"][questNum]["firstAnswer"];
     variant2.textContent = data["answersArray"][questNum]["secondAnswer"];
+    if(questNum >= 0) {
+      backButton.hidden = false;
+      document.getElementById("nextbutton").textContent = "далее";
+    }
   }
 }
 

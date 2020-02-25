@@ -19,7 +19,7 @@
           <div class="test text">
             <p class="test paragraph">Пройдите тестирование и узнайте, какие профессии в программировании вам подходят!</p>
             <p class="test paragraph">Тест поможет вам сориентироваться в IT-профессиях и покажет те, которые вам больше всего подходят. Прохождение тестирования займет не более 2-3 минут.</p>
-            <p class="test paragraph">Чтобы начать прохождение теста, нажмите на «Далее» ниже.</p>
+            <p class="test paragraph">Чтобы начать прохождение теста, нажмите на кнопку ниже.</p>
           </div>        
         </div>
         
@@ -71,8 +71,8 @@
         </form>  
         
         <div class="test buttons">
-          <button class="test button nav" tabindex="0" id="back" onclick="backClick()" disabled><span>Назад</span></button>
-          <button class="test button nav" tabindex="1" id="next" onclick="nextClick()"><span>Далее</span></button>
+          <button class="test button nav" tabindex="0" id="back" onclick="backClick()" disabled hidden><span>Назад</span></button>
+          <button class="test button nav" tabindex="1" id="next" onclick="nextClick()"><span id="nextbutton">Начать тестирование</span></button>
           <button class="test button more hidden" tabindex="1" id="modal" onclick="popupDisplay()"><span>Узнать больше</span></button>
         </div>        
       </div>  
@@ -83,7 +83,7 @@
       <div class="popup container">
         <button class="popup close"><span class="visually-hidden">Закрыть окно</span></button>
         
-        <form class="popup form container" id="mailform" action="https://epic.spb.ru/mail.php" method="POST">
+        <form class="popup form container" id="mailform" action="http://epic.spb.ru/mail.php" method="POST">
           <div class="popup form group">
             <p class="popup form message">Как вас зовут?</p>
             <label><span class="visually-hidden">Введите ваше имя</span><input class="popup form input" name="name" onchange="fieldCheck()" type="text" placeholder="Ваше имя"></label>
