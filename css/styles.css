@@ -293,7 +293,7 @@ button {
   margin-top: 50px;
 }
 
-.test.button.nav + .test.button.nav {
+.test.button.nav:not([hidden]) + .test.button.nav {
   margin-left: 50px;
 }
 
